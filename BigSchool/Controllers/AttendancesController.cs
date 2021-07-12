@@ -17,7 +17,7 @@ namespace BigSchool.Controllers
         {
             var userID = User.Identity.GetUserId();
             BigSchoolContext context = new BigSchoolContext();
-            if (context.Attendances.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))
+            if (context.Attendances.Any(p => p.Attendee == userID && p.CourseId == attendanceDto.Id))   
             {
                 return BadRequest("The attendance already exitsts!");
 

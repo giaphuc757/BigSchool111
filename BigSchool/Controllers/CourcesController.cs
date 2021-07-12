@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity.Migrations;
 
 namespace BigSchool.Controllers
 {
@@ -67,5 +68,54 @@ namespace BigSchool.Controllers
             }
             return View(courses);
         }
+
+
+        public ActionResult Edit(int id)
+        {
+            course cs = context.courses.FirstOrDefault(p => p.Id == id);
+            if (cs == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cs);
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(course cs)
+        {
+            course update = context.courses.FirstOrDefault(p => p.Id == cs.Id);
+            if(update != null)
+            {
+                context.courses.AddOrUpdate(cs);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Mine");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            course cs = context.courses.FirstOrDefault(p => p.Id == id);
+            if (cs == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cs);
+
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(course cs)
+        {
+            course dele = context.courses.FirstOrDefault(p => p.Id == cs.Id);
+            if (dele != null)
+            {
+                context.courses.Remove(dele);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Mine");
+        }
+
     }
 }

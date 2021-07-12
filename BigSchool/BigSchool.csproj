@@ -264,6 +264,8 @@
     <Content Include="Views\Cources\Create.cshtml" />
     <Content Include="Views\Cources\Attending.cshtml" />
     <Content Include="Views\Cources\Mine.cshtml" />
+    <Content Include="Views\Cources\Edit.cshtml" />
+    <Content Include="Views\Cources\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

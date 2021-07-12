@@ -18,7 +18,6 @@ namespace BigSchool.Controllers
             foreach (course i in upcommingCourse)
             {
                 ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(i.LecturerId);
-                // quản lý user, khi đăng nhập, lấy ID của đứa nào đăng nhập, system.web là những hàm trong thư viện để gọi id tương ứng, findbyID lấy id dựa vào id của user, dựa vào get identity
                 i.Name = user.Name;
 
             }

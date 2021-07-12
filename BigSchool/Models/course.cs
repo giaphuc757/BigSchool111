@@ -33,7 +33,7 @@ namespace BigSchool.Models
         public virtual ICollection<Attendance> Attendances { get; set; }
 
         public virtual Category Category { get; set; }
-        //public List<Category> ListCategory { get; internal set; }
+ 
 
         public List<Category> ListCategory = new List<Category>();
         public string Name;
