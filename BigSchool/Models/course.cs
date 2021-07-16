@@ -22,7 +22,7 @@ namespace BigSchool.Models
         public string LecturerId { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string Place { get; set; }
 
         public DateTime DateTime { get; set; }
@@ -33,7 +33,6 @@ namespace BigSchool.Models
         public virtual ICollection<Attendance> Attendances { get; set; }
 
         public virtual Category Category { get; set; }
- 
 
         public List<Category> ListCategory = new List<Category>();
         public string Name;

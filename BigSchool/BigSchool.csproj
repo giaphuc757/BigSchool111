@@ -199,6 +199,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\course.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\sysdiagram.cs" />
