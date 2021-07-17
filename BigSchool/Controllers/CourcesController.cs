@@ -116,6 +116,38 @@ namespace BigSchool.Controllers
             }
             return RedirectToAction("Mine");
         }
+ 
 
+
+        public ActionResult LectureImGoing()
+        {
+            ApplicationUser curentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            BigSchoolContext context = new BigSchoolContext();
+            var listFollowee = context.Followings.Where(p => p.FollowerId == curentUser.Id).ToList();
+            var listAttendances = context.Attendances.Where(p => p.Attendee == curentUser.Id).ToList();
+            var csr = new List<course>();
+            foreach (var crse in listAttendances)
+            {
+                foreach (var item in listFollowee)
+                {
+                    if (item.FolloweeId == crse.course.LecturerId)
+                    {
+                        course objCourse = crse.course;
+                        objCourse.LectureName =
+                       System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                        .FindById(objCourse.LecturerId).Name;
+                        csr.Add(objCourse);
+                    }
+                }
+            }
+            return View(csr);
+        }
+        public ActionResult details(int id)
+        {
+            BigSchoolContext context = new BigSchoolContext();
+
+            return View();
+        }
     }
 }
